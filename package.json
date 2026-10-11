@@ -1,0 +1,15 @@
+{
+  "name": "casa-rustia-waypoint",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Supabase workspace for Filipino remote workers, hosted on GitHub Pages.",
+  "scripts": {
+    "build": "node scripts/build-pages.mjs",
+    "test": "npm run build && node tests/cloud.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0",
+    "jszip": "3.10.2"
+  }
+}

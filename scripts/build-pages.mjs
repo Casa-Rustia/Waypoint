@@ -1,0 +1,10 @@
+import { mkdir, readFile, writeFile, cp, rename, rm } from 'node:fs/promises';
+const output = new URL('../dist/', import.meta.url);
+await rm(output, {recursive:true,force:true});
+await mkdir(output, {recursive:true});
+await cp(new URL('../web/',import.meta.url),output,{recursive:true});
+await rename(new URL('index.html',output),new URL('dashboard.html',output));
+await cp(new URL('landing.html',output),new URL('index.html',output));
+await writeFile(new URL('workspace.html',output),'<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=./dashboard.html"><a href="./dashboard.html">Open your workspace</a>');
+await writeFile(new URL('.nojekyll',output),'');
+console.log('Built welcome, sign-in and Supabase workspace in dist.');
